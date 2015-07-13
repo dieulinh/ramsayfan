@@ -24,6 +24,7 @@ default: &default
 development:
   <<: *default
   database: ramsayfan_development
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,5 +82,3 @@ test:
 production:
   <<: *default
   database: ramsayfan_production
-  username: ramsayfan
-  password: <%= ENV['RAMSAYFAN_DATABASE_PASSWORD'] %>
