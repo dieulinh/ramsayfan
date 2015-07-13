@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  dishes:
+    index:
+      no_dish: "There is no dish to show"
+      all_dishes: "Dishes List"
