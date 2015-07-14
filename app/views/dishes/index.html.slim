@@ -1,6 +1,6 @@
 - if @dishes.any?
 	h1 = t('.all_dishes')
-
+	= render partial: 'search'
 	table.table.table-bordered.dishes#index
 		thead
 			tr

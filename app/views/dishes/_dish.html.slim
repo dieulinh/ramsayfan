@@ -13,7 +13,8 @@ table.table
     td = dish.pax
   tr
     td Vegetarian
-    td = dish.vegetarian
+    td 
+      i.fa class=(dish.vegetarian?  ? "fa-check" : "fa-close")
   tr
     td Created Date
     td = dish.created_at.strftime('%a, %e %b %Y')
