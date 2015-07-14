@@ -1,18 +1,21 @@
-dl
-  dd = image_tag 'http://cdn1.projectwedding.com/1375591642_dada1b63d42e5f5e22251b94a9025ebf_m',  size: "150x100"
-  dt Dish name:
-  dd = dish.title
-	dt Description:
-  dd = dish.description
-  dt Cost:
-  dd = dish.cost
-  dt Pax
-  dd = dish.pax
-  dt Dish name
-  dd = dish.vegetarian
-  dt Created Date
-  dd = dish.created_at
-
-
-
-
+h1 Dish Details
+table.table
+  tr
+    td Dish name:
+    td = dish.title
+  tr
+  	td Description:
+    td = dish.description
+  tr
+    td Cost:
+    td = dish.cost
+  tr
+    td Pax
+    td = dish.pax
+  tr
+    td Vegetarian
+    td = dish.vegetarian
+  tr
+    td Created Date
+    td = dish.created_at
+= link_to 'Back', root_path
