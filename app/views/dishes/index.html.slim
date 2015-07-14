@@ -17,8 +17,8 @@
 							
 					td = dish.description
 					td = number_to_currency dish.cost
-					td
-						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-question')
+					td.text-center
+						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
 					td 
 						.btn.btn-link
 							= link_to "Details", dish_path(dish)
