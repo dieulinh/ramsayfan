@@ -9,4 +9,12 @@ RSpec.describe DishesController, type: :controller do
 			expect(assigns(:dishes)).to eq (created_dishes)
 		end
 	end
+
+	describe "#show" do
+		let!(:current_dish) { FactoryGirl.create(:dish) }
+		it "public user can view a dish" do
+			get :show, id: current_dish.id
+			expect(assigns(:dish)).to eq current_dish
+		end
+	end
 end
