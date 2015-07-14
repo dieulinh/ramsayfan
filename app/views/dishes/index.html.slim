@@ -1,8 +1,7 @@
 - if @dishes.any?
 	h1 = t('.all_dishes')
-	.dishes
-	- @dishes.each do |dish|
-		= link_to dish.title, dish_path(dish)
+	.dishes#index
+	= render partial: "dish", collection: @dishes
 - else
 	= t('.no_dish')
 
