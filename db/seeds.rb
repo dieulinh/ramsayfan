@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Dish.create(title: "Asparagus, black olive, goats curd, crispy seeds and nuts", description: 'a cheesecake with a difference from Gordon Ramsaya dessert recipe from Kim Woodward, Head Chef at York & Albany.',
+Dish.create(title: "Grilled Chicken Wings with Seasoned Buffalo Sauce", description: 'a cheesecake with a difference from Gordon Ramsaya dessert recipe from Kim Woodward, Head Chef at York & Albany.',
 	cost: 12.29, pax: 5)
 Dish.create(title: "Lemon Butter Scallops with Brussels Sprouts and Bacon", description: ' Melt butter in a large skillet over medium to high heat. Season scallops with salt and pepper and add to skillet once hot. Squeeze lemon juice over the tops and cook for 2-3 minutes or until bottom is a nice golden brown. (2.) Flip them over and cook another 2-3 minutes or until thoroughly cooked. Press your finger down on one to tell if it’s done. It should feel like a lightly flexed bicep.. and yes.. I flexed my arm while I checked the scallops so it’s okay if you do too',
 	cost: 8.25, pax: 2, vegetarian: true)
