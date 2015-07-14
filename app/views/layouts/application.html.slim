@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+	  title Ramsayfantitle
+	  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+	  = csrf_meta_tags 
+	head
+	body
+		.navbar.navbar-default.navbar-static-top
+		  .container
+		    .navbar-header
+		       = link_to 'Home', root_path, class: 'navbar-brand'
+      
+		= yield
+
