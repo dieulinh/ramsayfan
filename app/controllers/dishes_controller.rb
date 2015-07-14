@@ -1,5 +1,4 @@
-class DishesController < ApplicationController
-	
+class DishesController < ApplicationController	
 	def index
 		@dishes = Dish.all
 	end
@@ -13,5 +12,4 @@ class DishesController < ApplicationController
 	def dish_id
 		params[:id]
 	end
-
 end
