@@ -17,6 +17,9 @@ html
             = render "devise/menu/registration_items"
             = render "devise/menu/log_in_items"
     .container
+      - flash.each do |key, value| 
+        .alert.alert-success
+          = value
       = yield
 
 
