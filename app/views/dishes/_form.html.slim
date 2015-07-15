@@ -1,0 +1,27 @@
+.form-group.col-lg-6
+  = form_for(@dish) do |f|
+    - if @dish.errors.any?
+      .alert.alert-danger
+        h2 = pluralize(@dish.errors.count, "error") 
+          | prohibited this post from being saved:
+        ul
+        - @dish.errors.full_messages.each do |msg|
+          li
+            = msg
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_area :description, class: 'form-control'
+    .form-group
+      = f.label :cost
+      = f.number_field :cost, class: 'form-control'
+    .form-group
+      = f.label :pax
+      = f.number_field :pax, class: 'form-control'
+    .form-group
+      = f.label :vegetarian
+      = f.check_box :vegetarian
+
+    = f.submit "Create", class: 'btn btn-primary'
