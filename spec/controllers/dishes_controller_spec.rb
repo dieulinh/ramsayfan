@@ -37,16 +37,29 @@ RSpec.describe DishesController, type: :controller do
 	end
 
 	describe "#create" do
+
 		context "Success" do
 			let!(:user) { FactoryGirl.create(:user) }
 			let!(:dish_params) { FactoryGirl.attributes_for(:dish) }
 
-			before do
-				sign_in user
-			end
+			before { sign_in user }
+			after { sign_out user }
 
 			it "allows authenticated access" do
 		    expect{ post :create, dish:  dish_params }.to change(Dish, :count).by 1
+		  end
+		end	
+
+		context "Failed to create" do
+			let!(:user) { FactoryGirl.create(:user) }
+			let!(:dish_params) { FactoryGirl.attributes_for(:dish, title: nil) }
+
+			before { sign_in user }
+			after { sign_out user }
+
+			it "allows authenticated access" do
+				ap dish_params
+		    expect{ post :create, dish:  dish_params }.not_to change(Dish, :count)
 		  end
 		end	
 	end
