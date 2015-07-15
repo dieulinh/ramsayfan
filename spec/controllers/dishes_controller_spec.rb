@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DishesController, type: :controller do
 	describe "#index" do
 		context "list all dishes" do
-			let!(:created_dishes) { FactoryGirl.create_list(:dish, 2) }
+			let!(:created_dishes) { FactoryGirl.create_list(:dish, 1) }
 
 			it "public user can list all dishes" do
 				get :index
@@ -12,9 +12,9 @@ RSpec.describe DishesController, type: :controller do
 		end
 
 		context "search for dishes" do
-			context "search by title" do
+			context "search found" do
 				let!(:pho_ga_dish) { FactoryGirl.create(:dish, title: "chicken noodle soup") }
-				let!(:pho_bo_dish) { FactoryGirl.create(:dish, title: "Beef noodle soup") }
+				let!(:pho_bo_dish) { FactoryGirl.create(:dish, title: "Beef noodle soup", user: User.create(email: 'linh@example.com')) }
 				let(:dishes) { assigns(:dishes) }
 				let!(:search) { 'Chicken' }
 				
@@ -29,9 +29,25 @@ RSpec.describe DishesController, type: :controller do
 
 	describe "#show" do
 		let!(:current_dish) { FactoryGirl.create(:dish) }
+
 		it "public user can view a dish" do
 			get :show, id: current_dish.id
 			expect(assigns(:dish)).to eq current_dish
 		end
+	end
+
+	describe "#create" do
+		context "Success" do
+			let!(:user) { FactoryGirl.create(:user) }
+			let!(:dish_params) { FactoryGirl.attributes_for(:dish) }
+
+			before do
+				sign_in user
+			end
+
+			it "allows authenticated access" do
+		    expect{ post :create, dish:  dish_params }.to change(Dish, :count).by 1
+		  end
+		end	
 	end
 end

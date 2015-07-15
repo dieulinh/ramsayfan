@@ -5,5 +5,6 @@ FactoryGirl.define do
 		cost 12.34
 		pax 5
 		vegetarian false
+		user
 	end
 end
