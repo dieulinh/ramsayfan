@@ -36,31 +36,38 @@ RSpec.describe DishesController, type: :controller do
 		end
 	end
 
-	describe "#create" do
+	context "Require authenticated" do
+		let!(:user) { FactoryGirl.create(:user, email: "lan@example.com") }
+		before { sign_in user }
+		after { sign_out user }
+		describe "#create" do
 
-		context "Success" do
-			let!(:user) { FactoryGirl.create(:user) }
-			let!(:dish_params) { FactoryGirl.attributes_for(:dish) }
+			context "Success" do
+				let!(:dish_params) { FactoryGirl.attributes_for(:dish) }
 
-			before { sign_in user }
-			after { sign_out user }
+				it "allows authenticated access" do
+			    expect{ post :create, dish:  dish_params }.to change(Dish, :count).by 1
+			  end
+			end	
 
-			it "allows authenticated access" do
-		    expect{ post :create, dish:  dish_params }.to change(Dish, :count).by 1
-		  end
-		end	
+			context "Failed to create" do
+				let!(:dish_params) { FactoryGirl.attributes_for(:dish, title: nil) }
 
-		context "Failed to create" do
-			let!(:user) { FactoryGirl.create(:user) }
-			let!(:dish_params) { FactoryGirl.attributes_for(:dish, title: nil) }
+				it "allows authenticated access" do
+			    expect{ post :create, dish:  dish_params }.not_to change(Dish, :count)
+			  end
+			end	
+		end
 
-			before { sign_in user }
-			after { sign_out user }
-
-			it "allows authenticated access" do
-				ap dish_params
-		    expect{ post :create, dish:  dish_params }.not_to change(Dish, :count)
-		  end
-		end	
+		describe "#update" do
+			context "Update Successfully" do
+				let!(:dish) { FactoryGirl.create(:dish) }
+				it "should change to new values" do
+					put :update, id: dish.id, dish: FactoryGirl.attributes_for(:dish, title: "Grilled Sweet Potato")
+					dish.reload
+					expect(dish.title).to eq "Grilled Sweet Potato"
+				end
+			end
+		end
 	end
 end

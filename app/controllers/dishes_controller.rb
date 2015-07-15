@@ -1,5 +1,5 @@
 class DishesController < ApplicationController	
-	before_action :authenticate_user!, :except => [:show, :index]
+	before_action :authenticate_user!, except: [:show, :index]
 
 	def index
 		@dishes = Dish.search(search_params)
@@ -20,7 +20,18 @@ class DishesController < ApplicationController
 			flash[:notice] = "Successful creating"
 			redirect_to root_url
 		else
-			flash[:errors] = "There is an errors while creating dish"
+			flash[:error] = "There is an errors while creating dish"
+			render :new
+		end
+	end
+
+	def update
+		@dish = Dish.find(dish_id)
+		if @dish.update(dish_params)
+			flash[:notice] = "Successful updated"
+			redirect_to root_url
+		else
+			flash[:error] = "Failed to update"
 			render :new
 		end
 	end
