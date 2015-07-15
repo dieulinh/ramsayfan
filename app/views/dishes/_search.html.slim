@@ -1,7 +1,5 @@
-.row
-	.col-lg-6
-    .input-group
-      input type="text" class="form-control"  name="search" placeholder="Search for..."
-      span class="input-group-btn"
-        button class="btn btn-primary" type="submit"
-        	|	Go!
+=form_tag(dishes_path, method: "get",  class: "navbar-search")
+  .input-group.search-dishes-box
+  	= text_field_tag :search, nil, placeholder: "Search for...", class: "form-control"
+  	span.input-group-btn
+  		= submit_tag "Go!", class: "btn btn-primary" 
