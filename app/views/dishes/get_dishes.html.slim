@@ -1,0 +1,27 @@
+- if @dishes.any?
+	h1 = t('.all_dishes')
+	= render partial: 'search'
+	table.table.table-bordered.dishes#index
+		thead
+			tr
+				th Title
+				th Desription
+				th Cost
+				th Vegetarian
+				th Details
+			tbody
+			- @dishes.each do |dish|
+				tr 
+					td
+						= link_to dish.title, dish_path(dish)
+							
+					td = dish.description
+					td = number_to_currency dish.cost
+					td.text-center
+						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
+					td 
+						.btn.btn-link
+							= link_to "Details", dish_path(dish)
+- else
+	= t('.no_dish')
+

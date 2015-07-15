@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe DishesController, type: :controller do
 	describe "#index" do
 		context "list all dishes" do
-			let!(:created_dishes) { FactoryGirl.create_list(:dish, 1) }
+			let!(:user) { FactoryGirl.create(:user, email: "lan@example.com") }
+			
+			let!(:created_dishes) { FactoryGirl.create_list(:dish, 2) }
 
 			it "public user can list all dishes" do
 				get :index
@@ -40,8 +42,8 @@ RSpec.describe DishesController, type: :controller do
 		let!(:user) { FactoryGirl.create(:user, email: "lan@example.com") }
 		before { sign_in user }
 		after { sign_out user }
+		
 		describe "#create" do
-
 			context "Success" do
 				let!(:dish_params) { FactoryGirl.attributes_for(:dish) }
 
@@ -69,5 +71,9 @@ RSpec.describe DishesController, type: :controller do
 				end
 			end
 		end
+
+		
 	end
+	
+	
 end

@@ -1,5 +1,5 @@
 class DishesController < ApplicationController	
-	before_action :authenticate_user!, except: [:show, :index]
+	before_action :authenticate_user!, except: [:show, :index, :get_dishes]
 
 	def index
 		@dishes = Dish.search(search_params)
@@ -10,12 +10,12 @@ class DishesController < ApplicationController
 	end
 
 	def new
-		@dish = Dish.new
+		@dish = current_user.dishes.build
 	end
 
 	def create
-		@dish = Dish.new(dish_params)
-		@dish.user = current_user if current_user
+		@dish = current_user.dishes.build(dish_params)
+		# @dish.user = current_user if current_user
 		if @dish.save
 			flash[:notice] = "Successful creating"
 			redirect_to root_url
@@ -34,6 +34,15 @@ class DishesController < ApplicationController
 			flash[:error] = "Failed to update"
 			render :new
 		end
+	end
+
+	def edit
+		@dish = current_user.dishes.find(dish_id)
+		render :new
+	end
+
+	def get_dishes
+		@dishes = current_user.dishes
 	end
 
 	private
