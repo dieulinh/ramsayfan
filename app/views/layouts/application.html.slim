@@ -18,8 +18,12 @@ html
             = render "devise/menu/log_in_items"
     .container
       - flash.each do |key, value| 
-        .alert.alert-success
-          = value
+        -if flash[:notice] or flash[:success]
+          .alert.alert-success
+            = flash[:notice]
+        - else
+          .alert.alert-danger
+            = value
       = yield
 
 
