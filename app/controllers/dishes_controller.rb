@@ -18,7 +18,7 @@ class DishesController < ApplicationController
 		# @dish.user = current_user if current_user
 		if @dish.save
 			flash[:notice] = "Successful creating"
-			redirect_to root_url
+			redirect_to dish_url(@dish)
 		else
 			flash[:error] = "There is an errors while creating dish"
 			render :new
@@ -29,7 +29,7 @@ class DishesController < ApplicationController
 		@dish = Dish.find(dish_id)
 		if @dish.update(dish_params)
 			flash[:notice] = "Successful updated"
-			redirect_to root_url
+			redirect_to dish_url(@dish)
 		else
 			flash[:error] = "Failed to update"
 			render :new
