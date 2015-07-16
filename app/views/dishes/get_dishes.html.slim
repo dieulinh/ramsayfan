@@ -23,12 +23,12 @@
 					td.text-center
 						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
 					td 
-						.btn.btn-link
+						.btn.btn-default
 							= link_to "Details", dish_path(dish)
-						.btn.btn-link
+						.btn.btn-default
 							= link_to "Edit", edit_dish_path(dish)
-						.btn.btn-link
-							= link_to "Publish", user_publish_path(dish), method: :put
+						.btn.btn-default
+							= link_to (dish.published? ? "Unpublish" : "Publish"), user_publish_path(dish), method: :put
 - else
 		.alert.alert-info 
 			| No dish found
