@@ -15,7 +15,6 @@ class DishesController < ApplicationController
 
 	def create
 		@dish = current_user.dishes.build(dish_params)
-		# @dish.user = current_user if current_user
 		if @dish.save
 			flash[:notice] = "Successful creating"
 			redirect_to dish_url(@dish)
@@ -43,6 +42,16 @@ class DishesController < ApplicationController
 
 	def get_dishes
 		@dishes = current_user.dishes
+	end
+	def publish
+		@dish = Dish.find(dish_id)
+		published = @dish.published =!@dish.published
+		if @dish.save
+			(published ? flash[:notice] = "Publish Successfully" : flash[:notice] = "Unpublish Successfully")
+			redirect_to dish_url(@dish)
+		else
+			flash[:error] = "Fail to publish the dish"
+		end
 	end
 
 	private

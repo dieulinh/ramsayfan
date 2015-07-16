@@ -1,11 +1,11 @@
 - if @dishes.any?
-	h1 = t('.all_dishes')
-	= render partial: 'search'
+	h1 My Dish
 	table.table.table-bordered.dishes#index
 		thead
 			tr
 				th Title
 				th Desription
+				th Publish
 				th Cost
 				th Pax
 				th Vegetarian
@@ -14,9 +14,10 @@
 			- @dishes.each do |dish|
 				tr 
 					td
-						= link_to dish.title, dish_path(dish)
-							
+						= link_to dish.title, dish_path(dish)	
 					td = dish.description
+					td.text-center
+						i class=(dish.published? ? 'fa fa-check' : 'fa fa-close')
 					td = number_to_currency dish.cost
 					td = dish.pax
 					td.text-center
@@ -26,6 +27,8 @@
 							= link_to "Details", dish_path(dish)
 						.btn.btn-link
 							= link_to "Edit", edit_dish_path(dish)
+						.btn.btn-link
+							= link_to "Publish", user_publish_path(dish), method: :put
 - else
 		.alert.alert-info 
 			| No dish found

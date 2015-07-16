@@ -18,6 +18,10 @@ table.table
   tr
     td Created Date
     td = dish.created_at.strftime('%a, %e %b %Y')
+  tr
+    td Published
+    td 
+      i.fa class=(dish.published?  ? "fa-check" : "fa-close")
 - if user_signed_in?
   .btn.btn-default
     = link_to "Edit", edit_dish_path(dish)
