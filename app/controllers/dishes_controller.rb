@@ -1,5 +1,5 @@
 class DishesController < ApplicationController	
-	before_action :authenticate_user!, except: [:show, :index, :get_dishes]
+	before_action :authenticate_user!, except: [:show, :index]
 
 	def index
 		@dishes = Dish.search(search_params)
