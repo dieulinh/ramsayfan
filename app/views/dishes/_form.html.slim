@@ -16,10 +16,10 @@
       = f.text_area :description, class: 'form-control'
     .form-group
       = f.label :cost
-      = f.number_field :cost, value: 0.5, min: 0.5, step: 0.5, class: 'form-control'
+      = f.number_field :cost, min: 0.5, step: 0.5, class: 'form-control'
     .form-group
       = f.label :pax
-      = f.number_field :pax, value: 1, min: 1, class: 'form-control'
+      = f.number_field :pax, min: 1, class: 'form-control'
     .form-group
       = f.label :vegetarian
       = f.check_box :vegetarian

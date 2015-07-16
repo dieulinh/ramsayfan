@@ -7,6 +7,7 @@
 				th Title
 				th Desription
 				th Cost
+				th Pax
 				th Vegetarian
 				th Details
 			tbody
@@ -17,6 +18,7 @@
 							
 					td = dish.description
 					td = number_to_currency dish.cost
+					td = dish.pax
 					td.text-center
 						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
 					td 
@@ -24,5 +26,6 @@
 							= link_to "Details", dish_path(dish)
 - else
 		.alert.alert-info = t('.no_dish')
-= link_to "Back", :back
+.btn.btn-default
+	= link_to "Back", :back
 
