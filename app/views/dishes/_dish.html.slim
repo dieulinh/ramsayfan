@@ -21,9 +21,11 @@ table.table
   tr
     td Published
     td 
-      i.fa class=(dish.published?  ? "fa-check" : "fa-close")
+      i.fa.fa-2x class=(dish.published?  ? "fa-check" : "fa-close")
 - if user_signed_in?
   .btn.btn-default
     = link_to "Edit", edit_dish_path(dish)
+  .btn.btn-default
+              = link_to (dish.published? ? "Unpublish" : "Publish"), user_publish_path(dish), method: :put
 .btn.btn-default
   = link_to 'Back', :back
