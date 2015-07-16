@@ -5,15 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Dish.destroy_all
+User.destroy_all
+
+user = User.create(email: "binh@example.com", password: "12345678")
 Dish.create(title: "Grilled Chicken Wings with Seasoned Buffalo Sauce", description: 'a cheesecake with a difference from Gordon Ramsaya dessert recipe from Kim Woodward, Head Chef at York & Albany.',
-	cost: 12.29, pax: 5)
+	cost: 12.29, pax: 5, user_id: user.id)
 Dish.create(title: "Lemon Butter Scallops with Brussels Sprouts and Bacon", description: ' Melt butter in a large skillet over medium to high heat. Season scallops with salt and pepper and add to skillet once hot. Squeeze lemon juice over the tops and cook for 2-3 minutes or until bottom is a nice golden brown. (2.) Flip them over and cook another 2-3 minutes or until thoroughly cooked. Press your finger down on one to tell if it’s done. It should feel like a lightly flexed bicep.. and yes.. I flexed my arm while I checked the scallops so it’s okay if you do too',
-	cost: 8.25, pax: 2, vegetarian: true)
+	cost: 8.25, pax: 2, vegetarian: true, user_id: user.id)
 Dish.create(title: "Brussels Sprouts, Gordon Ramsay Style", description: "The word fritter usually conjures up something heavy and deep-fried, but these zucchini pancakes are as light and delicate as can be.",
-	cost: 12.29, pax: 3, vegetarian: true)
+	cost: 12.29, pax: 3, vegetarian: true, user_id: user.id)
 Dish.create(title: "Asparagus salads", description: "the Italian sauce made from olive oil, basil, garlic, nuts and Parmesan cheese — but this has to be one of my favorites.",
-	cost: 10.59, pax: 1)
+	cost: 10.59, pax: 1, user_id: user.id)
 Dish.create(title: "Roasted Garlic Guacamole", description: "this bright and spicy salsa combines vine-ripened tomatoes, onions, garlic, Serrano chiles, cilantro and fresh lime.",
-	cost: 15.29, pax: 2)
+	cost: 15.29, pax: 2, user_id: user.id)
 Dish.create(title: "Meat from Dunkin' Donuts", description: "Traditional guacamole is made with raw onions, which are flavorful yet pungent. This version, made with roasted garlic, has all of the flavor of the traditional guacamole but none of the unpleasant aftertaste. It’s always a crowd-pleaser!",
-	cost: 34.89, pax: 6)
+	cost: 34.89, pax: 6, user_id: user.id)
