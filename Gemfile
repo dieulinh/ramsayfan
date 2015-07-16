@@ -18,6 +18,7 @@ group :production do
 	gem 'puma'
 end
 gem 'devise'
+gem 'rails_admin'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
