@@ -71,9 +71,5 @@ RSpec.describe DishesController, type: :controller do
 				end
 			end
 		end
-
-		
 	end
-	
-	
 end

@@ -8,7 +8,7 @@
 				th Desription
 				th Cost
 				th Vegetarian
-				th Details
+				th Actions
 			tbody
 			- @dishes.each do |dish|
 				tr 
@@ -22,6 +22,9 @@
 					td 
 						.btn.btn-link
 							= link_to "Details", dish_path(dish)
+						.btn.btn-link
+							= link_to "Edit", edit_dish_path(dish)
 - else
 	= t('.no_dish')
+= link_to "Back", :back
 
