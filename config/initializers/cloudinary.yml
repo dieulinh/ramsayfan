@@ -1,0 +1,18 @@
+development:
+  cloud_name: linhnguyen
+  api_key: '621199713565474'
+  api_secret: HakIoCUJ66u0knpTXE1lCQLX93g
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: linhnguyen
+  api_key: '621199713565474'
+  api_secret: HakIoCUJ66u0knpTXE1lCQLX93g
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: linhnguyen
+  api_key: '621199713565474'
+  api_secret: HakIoCUJ66u0knpTXE1lCQLX93g
+  enhance_image_tag: true
+  static_image_support: false
