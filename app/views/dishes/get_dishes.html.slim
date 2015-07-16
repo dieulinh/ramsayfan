@@ -25,6 +25,7 @@
 						.btn.btn-link
 							= link_to "Edit", edit_dish_path(dish)
 - else
-	= t('.no_dish')
+		.alert.alert-info 
+			| No dish found
 = link_to "Back", :back
 
