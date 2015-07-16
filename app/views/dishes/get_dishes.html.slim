@@ -4,7 +4,6 @@
 		thead
 			tr
 				th Title
-				th Desription
 				th Published
 				th Cost
 				th Pax
@@ -16,7 +15,6 @@
 				tr 
 					td
 						= link_to dish.title, dish_path(dish)	
-					td = dish.description
 					td.text-center
 						i class=(dish.published? ? 'fa fa-2x fa-check' : 'fa fa-2x fa-close') style="color: green;"
 					td = number_to_currency dish.cost
@@ -25,7 +23,7 @@
 						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
 					td = dish.created_at.strftime('%a, %e %b %Y')
 					td 
-						.btn.btn-default
+						.btn.btn-link
 							= link_to "Details", dish_path(dish)
 						.btn.btn-default
 							= link_to "Edit", edit_dish_path(dish)
