@@ -4,12 +4,13 @@
 		thead
 			tr
 				th Title
-				th Published
+				th.text-center Published
 				th Cost
 				th Pax
-				th Vegetarian
+				th.text-center Vegetarian
 				th Created Date
-				th Actions
+				th.text-center Approved
+				th.text-center Actions
 			tbody
 			- @dishes.each do |dish|
 				tr 
@@ -22,6 +23,8 @@
 					td.text-center
 						i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
 					td = dish.created_at.strftime('%a, %e %b %Y')
+					td.text-center
+						i class=(dish.approved? ? 'fa fa-2x fa-check' : 'fa fa-2x fa-close') style="color: red;"
 					td 
 						.btn.btn-link
 							= link_to "Details", dish_path(dish)

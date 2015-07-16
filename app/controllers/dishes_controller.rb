@@ -36,13 +36,14 @@ class DishesController < ApplicationController
 	end
 
 	def edit
-		@dish = current_user.dishes.find(dish_id)
+		@dish = Dish.find(dish_id)
 		render :new
 	end
 
 	def get_dishes
 		@dishes = current_user.dishes
 	end
+
 	def publish
 		@dish = Dish.find(dish_id)
 		published = @dish.published =!@dish.published
@@ -57,7 +58,7 @@ class DishesController < ApplicationController
 	private
 	
 	def dish_params
-		params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :user_id)
+		params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :published, :user_id)
 	end
 
 	def dish_id

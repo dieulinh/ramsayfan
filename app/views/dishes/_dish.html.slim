@@ -22,6 +22,10 @@ table.table
     td Published
     td 
       i.fa.fa-2x class=(dish.published?  ? "fa-check" : "fa-close")
+  tr
+    td Approved
+    td 
+      i.fa.fa-2x class=(dish.approved?  ? "fa-check" : "fa-close")
 - if user_signed_in?
   .btn.btn-default
     = link_to "Edit", edit_dish_path(dish)
