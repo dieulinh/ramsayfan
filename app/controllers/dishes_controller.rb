@@ -2,7 +2,8 @@ class DishesController < ApplicationController
 	before_action :authenticate_user!, except: [:show, :index]
 
 	def index
-		@dishes = Dish.search(search_params)
+		@dishes = Dish.published.approved
+		@dishes = @dishes.search_by_title(search_params) | @dishes.search_by_description(search_params) if search_params.present?
 	end
 
 	def show
@@ -19,7 +20,7 @@ class DishesController < ApplicationController
 			flash[:notice] = "Successful creating"
 			redirect_to dish_url(@dish)
 		else
-			flash[:error] = "There is an errors while creating dish"
+			flash[:error] = "There is an error while creating dish"
 			render :new
 		end
 	end
@@ -40,18 +41,21 @@ class DishesController < ApplicationController
 		render :new
 	end
 
+	def get_unapproved_dish
+		@dish = Dish.unapproved
+	end
+
 	def get_dishes
 		@dishes = current_user.dishes
 	end
 
 	def publish
 		@dish = Dish.find(dish_id)
-		published = @dish.published =!@dish.published
 		if @dish.save
-			(published ? flash[:notice] = "Publish Successfully" : flash[:notice] = "Unpublish Successfully")
+			flash[:notice] = @dish.published ? "Publish Successfully" : "Unpublish Successfully"
 			redirect_to dish_url(@dish)
 		else
-			flash[:error] = "Fail to publish the dish"
+			flash[:danger] = "Fail to publish the dish"
 		end
 	end
 
@@ -62,7 +66,7 @@ class DishesController < ApplicationController
 	end
 
 	def dish_id
-		params[:id]
+		params.require(:id)
 	end
 
 	def search_params

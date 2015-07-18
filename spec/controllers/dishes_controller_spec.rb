@@ -41,7 +41,6 @@ RSpec.describe DishesController, type: :controller do
 	context "Require authenticated" do
 		let!(:user) { FactoryGirl.create(:user, email: "lan@example.com") }
 		before { sign_in user }
-		after { sign_out user }
 		
 		describe "#create" do
 			context "Success" do
@@ -64,6 +63,7 @@ RSpec.describe DishesController, type: :controller do
 		describe "#update" do
 			context "Update Successfully" do
 				let!(:dish) { FactoryGirl.create(:dish) }
+
 				it "should change to new values" do
 					put :update, id: dish.id, dish: FactoryGirl.attributes_for(:dish, title: "Grilled Sweet Potato")
 					dish.reload
