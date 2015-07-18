@@ -26,6 +26,17 @@ table.table
     td Approved
     td 
       i.fa.fa-2x class=(dish.approved?  ? "fa-check" : "fa-close")
+  tr 
+    td 
+      = link_to like_dish_path(dish), method: :put, class: "btn btn-default btn-sm" do
+        span.glyphicon.glyphicon-heart-empty
+      = dish.get_upvotes.size
+       | - upvotes
+    td
+      = link_to dislike_dish_path(dish), method: :put , class: "btn btn-default btn-sm" do
+        span.glyphicon.glyphicon-thumbs-down
+      = dish.get_downvotes.size 
+       | - downvotes
 - if user_signed_in?
   .btn.btn-default
     = link_to "Edit", edit_dish_path(dish)

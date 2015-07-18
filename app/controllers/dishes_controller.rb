@@ -59,6 +59,18 @@ class DishesController < ApplicationController
 		end
 	end
 
+	def upvote
+		@dish = Dish.find(dish_id)
+    @dish.upvote_by current_user
+   	redirect_to :back
+	end
+
+	def downvote
+		@dish = Dish.find(dish_id)
+    @dish.downvote_by current_user
+   	redirect_to :back
+	end
+
 	private
 	
 	def dish_params
