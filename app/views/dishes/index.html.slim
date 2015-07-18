@@ -8,29 +8,6 @@
 				= link_to image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPM5z5ZQhGAqZGxfaYf9eeQ7ncRwyh0jrMPsPnhxqN5sJG3m2wQg'), dish_path(dish)
 			.panel-body
 				h2 = link_to dish.title, dish_path(dish)
-		table.table.table-bordered.dishes#index
-			thead
-				tr
-					th Title
-					th Desription
-					th Cost
-					th Pax
-					th Vegetarian
-					th Details
-				tbody
-				- @dishes.each do |dish|
-					tr 
-						td
-							= link_to dish.title, dish_path(dish)
-								
-						td = dish.description
-						td = number_to_currency dish.cost
-						td = dish.pax
-						td.text-center
-							i class=(dish.vegetarian? ? 'fa fa-check' : 'fa fa-close')
-						td 
-							.btn.btn-link
-								= link_to "Details", dish_path(dish)
 - else
 		.alert.alert-info = t('.no_dish')
 .btn.btn-default
