@@ -51,6 +51,7 @@ class DishesController < ApplicationController
 
 	def publish
 		@dish = Dish.find(dish_id)
+		@dish.published = !@dish.published
 		if @dish.save
 			flash[:notice] = @dish.published ? "Publish Successfully" : "Unpublish Successfully"
 			redirect_to dish_url(@dish)
