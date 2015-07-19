@@ -8,6 +8,7 @@ class DishesController < ApplicationController
 
 	def show
 		@dish = Dish.find(dish_id)
+		@comments = @dish.comments
 	end
 
 	def new
@@ -72,10 +73,23 @@ class DishesController < ApplicationController
    	redirect_to :back
 	end
 
+	def add_new_comment
+		@dish = Dish.find(params[:id])
+		comment = @dish.comments.new(params[:comment].permit(:title, :comment, :user_id))
+		comment.user_id = current_user.id
+    @dish.comments << comment
+    redirect_to action: :show, id: @dish
+
+	end
+
 	private
 	
 	def dish_params
 		params.require(:dish).permit(:title, :description, :cost, :pax, :vegetarian, :published, :user_id)
+	end
+
+	def comment_params
+		params.require(:comment).permit(:title, :comment, :dish_id)
 	end
 
 	def dish_id

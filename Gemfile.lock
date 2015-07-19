@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_commentable (4.0.2)
     acts_as_votable (0.10.0)
     arel (6.0.2)
     autoprefixer-rails (5.2.1)
@@ -258,6 +259,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable
   acts_as_votable (~> 0.10.0)
   awesome_print
   bootstrap-sass

@@ -1,5 +1,6 @@
 class Dish < ActiveRecord::Base
 	acts_as_votable
+	acts_as_commentable
 	belongs_to :user, inverse_of: :dishes
 
 	validates_presence_of :title, :description

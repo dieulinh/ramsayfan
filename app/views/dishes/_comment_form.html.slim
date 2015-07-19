@@ -1,0 +1,10 @@
+.form-group.col-lg-12
+  = form_tag add_new_comment_to_dishes_path, method: :post do
+    = hidden_field_tag :id, @dish.id
+    .form-group
+      = label_tag "Title"
+      = text_field_tag "comment[title]", nil, class: "form-control"
+    .form-group
+      = label_tag "Comment"
+      = text_area_tag "comment[comment]", nil, class: "form-control"
+    = submit_tag "Post Comment"

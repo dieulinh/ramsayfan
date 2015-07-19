@@ -37,10 +37,21 @@ table.table
         span.glyphicon.glyphicon-thumbs-down
       = dish.get_downvotes.size 
        | - downvotes
-- if user_signed_in?
+- @comments.each do |comment|
+  .form-group
+    span = comment.title
+    - if comment.user_id.present?
+      | - 
+      span = get_user_email(comment.user_id)
+    p = comment.comment
+    
+= render 'comment_form'
+br
+.col-lg-12
+  - if user_signed_in?
+    .btn.btn-default
+      = link_to "Edit", edit_dish_path(dish)
+    .btn.btn-default
+      = link_to (dish.published? ? "Unpublish" : "Publish"), user_publish_path(dish), method: :put
   .btn.btn-default
-    = link_to "Edit", edit_dish_path(dish)
-  .btn.btn-default
-              = link_to (dish.published? ? "Unpublish" : "Publish"), user_publish_path(dish), method: :put
-.btn.btn-default
-  = link_to 'Back', :back
+    = link_to 'Back', :back
